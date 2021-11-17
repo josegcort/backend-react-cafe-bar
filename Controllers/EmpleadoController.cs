@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using APICafecito.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -47,6 +48,109 @@ namespace APICafecito.Controllers
                 }
             }
             return new JsonResult(table);
+        }
+
+        //CREACION
+        [HttpPost]
+        public JsonResult Post(Models.Empleado emp)
+        {
+            string query = @"
+                        INSERT INTO bd_cafecito.empleado
+                        (nombre,
+                        apellido,
+                        cargo,
+                        foto,
+                        instagram,
+                        youtube,
+                        facebook,
+                        twitter)
+                        VALUES
+                        (@EmpleadoNombre,
+                        @EmpleadoApellido,
+                        @EmpleadoCargo,
+                        @EmpleadoFoto,
+                        @EmpleadoInstagram,
+                        @EmpleadoYoutube,
+                        @EmpleadoFacebook,
+                        @EmpleadoTwitter);
+                        
+            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("TestAppCon");
+            MySqlDataReader myReader;
+            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            {
+                mycon.Open();
+                using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
+                {
+                    myCommand.Parameters.AddWithValue("@EmpleadoId", emp.id);
+                    myCommand.Parameters.AddWithValue("@EmpleadoNombre", emp.nombre);
+                    myCommand.Parameters.AddWithValue("@EmpleadoApellido", emp.apellido);
+                    myCommand.Parameters.AddWithValue("@EmpleadoCargo", emp.cargo);
+                    myCommand.Parameters.AddWithValue("@EmpleadoFoto", emp.foto);
+                    myCommand.Parameters.AddWithValue("@EmpleadoInstagram", emp.instagram);
+                    myCommand.Parameters.AddWithValue("@EmpleadoYoutube", emp.youtube);
+                    myCommand.Parameters.AddWithValue("@EmpleadoFacebook", emp.facebook);
+                    myCommand.Parameters.AddWithValue("@EmpleadoTwitter", emp.twitter);
+
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    mycon.Close();
+                }
+            }
+
+            return new JsonResult("Added Successfully");
+        }
+
+        //Modificacion
+        [HttpPut]
+        public JsonResult Put(Empleado emp)
+        {
+            string query = @"                       
+                        UPDATE bd_cafecito.empleado
+                        SET
+                        nombre = @EmpleadoNombre,
+                        apellido = @EmpleadoApellido,
+                        cargo = @EmpleadoCargo,
+                        foto = @EmpleadoFoto,
+                        instagram = @EmpleadoInstagram,
+                        youtube = @EmpleadoYoutube,
+                        facebook = @EmpleadoFacebook,
+                        twitter = @EmpleadoTwitter
+                        WHERE id = @EmpleadoId;
+
+            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("TestAppCon");
+            MySqlDataReader myReader;
+            using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
+            {
+                mycon.Open();
+                using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
+                {
+                    myCommand.Parameters.AddWithValue("@EmpleadoId", emp.id);
+                    myCommand.Parameters.AddWithValue("@EmpleadoNombre", emp.nombre);
+                    myCommand.Parameters.AddWithValue("@EmpleadoApellido", emp.apellido);
+                    myCommand.Parameters.AddWithValue("@EmpleadoCargo", emp.cargo);
+                    myCommand.Parameters.AddWithValue("@EmpleadoFoto", emp.foto);
+                    myCommand.Parameters.AddWithValue("@EmpleadoInstagram", emp.instagram);
+                    myCommand.Parameters.AddWithValue("@EmpleadoYoutube", emp.youtube);
+                    myCommand.Parameters.AddWithValue("@EmpleadoFacebook", emp.facebook);
+                    myCommand.Parameters.AddWithValue("@EmpleadoTwitter", emp.twitter);
+
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    mycon.Close();
+                }
+            }
+
+            return new JsonResult("Updated Successfully");
         }
     }
 }
