@@ -31,7 +31,7 @@ namespace APICafecito.Controllers
                         youtube,
                         facebook,
                         twitter
-                        FROM bd_cafecito.empleado;
+                        FROM empleado;
             ";
 
             DataTable table = new DataTable();
@@ -55,7 +55,7 @@ namespace APICafecito.Controllers
         public JsonResult Post(Models.Empleado emp)
         {
             string query = @"
-                        INSERT INTO bd_cafecito.empleado
+                        INSERT INTO empleado
                         (nombre,
                         apellido,
                         cargo,
@@ -110,7 +110,7 @@ namespace APICafecito.Controllers
         public JsonResult Put(Empleado emp)
         {
             string query = @"                       
-                        UPDATE bd_cafecito.empleado
+                        UPDATE empleado
                         SET
                         nombre = @EmpleadoNombre,
                         apellido = @EmpleadoApellido,
@@ -158,7 +158,7 @@ namespace APICafecito.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                        DELETE FROM bd_cafecito.empleado 
+                        DELETE FROM empleado 
                         WHERE id=@EmpleadoId;
             ";
 
