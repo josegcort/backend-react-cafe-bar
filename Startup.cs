@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,8 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
-using Microsoft.EntityFrameworkCore;
-using APICafecito.Data;
 
 namespace APICafecito
 {
@@ -46,9 +44,6 @@ namespace APICafecito
             );
 
             services.AddControllers();
-
-            services.AddDbContext<APICafecitoContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("APICafecitoContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
