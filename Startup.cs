@@ -30,7 +30,7 @@ namespace APICafecito
                 c => {
                     c.AddPolicy(
                         "AllowOrigin", 
-                        options => options.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader()
+                        options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
                     );
                 }
             );
