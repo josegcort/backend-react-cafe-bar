@@ -72,8 +72,8 @@ namespace APICafecito.Controllers
                         (@ReservaNombre,
                         @ReservaEmail,
                         @ReservaDocumento,
-                        @ReservaServicio,
                         @ReservaPersonas,
+                        @ReservaServicio,
                         @ReservaFecha,
                         @ReservaHora,
                         @ReservaMensaje);
@@ -90,6 +90,7 @@ namespace APICafecito.Controllers
                 {
                     myCommand.Parameters.AddWithValue("@ReservaId", res.id);
                     myCommand.Parameters.AddWithValue("@ReservaNombre", res.nombre);
+                    myCommand.Parameters.AddWithValue("@ReservaEmail", res.email);
                     myCommand.Parameters.AddWithValue("@ReservaDocumento", res.documento);
                     myCommand.Parameters.AddWithValue("@ReservaServicio", res.servicio);
                     myCommand.Parameters.AddWithValue("@ReservaPersonas", res.personas);
@@ -113,9 +114,9 @@ namespace APICafecito.Controllers
         public JsonResult Put(Reserva res)
         {
             string query = @"                       
-                        UPDATE empleado
+                        UPDATE reserva
                         SET
-                        nombre = @EmpleadoNombre,
+                        nombre = @ReservaNombre,
                         email = @ReservaEmail,
                         documento = @ReservaDocumento,
                         servicio = @ReservaServicio,
@@ -123,7 +124,7 @@ namespace APICafecito.Controllers
                         fecha = @ReservaFecha,
                         hora = @ReservaHora,
                         mensaje = @ReservaMensaje
-                        WHERE id = @EmpleadoId;
+                        WHERE id = @ReservaId;
 
             ";
 
@@ -140,9 +141,10 @@ namespace APICafecito.Controllers
                     myCommand.Parameters.AddWithValue("@ReservaEmail", res.email);
                     myCommand.Parameters.AddWithValue("@ReservaDocumento", res.documento);
                     myCommand.Parameters.AddWithValue("@ReservaServicio", res.servicio);
-                    myCommand.Parameters.AddWithValue("@ReservaPersona", res.personas);
+                    myCommand.Parameters.AddWithValue("@ReservaPersonas", res.personas);
                     myCommand.Parameters.AddWithValue("@ReservaFecha", res.fecha);
                     myCommand.Parameters.AddWithValue("@ReservaHora", res.hora);
+                    myCommand.Parameters.AddWithValue("@ReservaMensaje", res.mensaje);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
