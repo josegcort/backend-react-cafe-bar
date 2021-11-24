@@ -108,7 +108,7 @@ namespace APICafecito.Controllers
                         descripcion = @HistoriaDescripcion,
                         contenido = @HistoriaContenido,
                         background = @HistoriaBackground,
-                        imagen = HistoriaImagen
+                        imagen = @HistoriaImagen
                         WHERE id = @HistoriaId;
 
             ";
