@@ -123,7 +123,7 @@ namespace APICafecito.Controllers
                         nombre = @ReservaNombre,
                         email = @ReservaEmail,
                         documento = @ReservaDocumento,
-                        telefono = ReservaTelefono;
+                        telefono = @ReservaTelefono;
                         servicio = @ReservaServicio,
                         personas = @ReservaPersonas,
                         fecha = @ReservaFecha,
