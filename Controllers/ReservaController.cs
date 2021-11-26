@@ -33,7 +33,8 @@ namespace APICafecito.Controllers
                         servicio,
                         fecha,
                         hora,
-                        mensaje
+                        mensaje,
+                        estado
                         FROM reserva;
             ";
 
