@@ -1,4 +1,3 @@
-# backend-react-cafe-bar
-# Despliegue HEROKU
+# Despliegue BackEnd HEROKU
 
 https://cafecito-backend.herokuapp.com/api/reserva
