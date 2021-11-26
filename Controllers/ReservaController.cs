@@ -28,6 +28,7 @@ namespace APICafecito.Controllers
                         nombre,
                         email,
                         documento,
+                        telefono,
                         personas,
                         servicio,
                         fecha,
@@ -63,6 +64,7 @@ namespace APICafecito.Controllers
                         (nombre,
                         email,
                         documento,
+                        telefono,
                         personas,
                         servicio,
                         fecha,
@@ -72,6 +74,7 @@ namespace APICafecito.Controllers
                         (@ReservaNombre,
                         @ReservaEmail,
                         @ReservaDocumento,
+                        @ReservaTelefono,
                         @ReservaPersonas,
                         @ReservaServicio,
                         @ReservaFecha,
@@ -92,6 +95,7 @@ namespace APICafecito.Controllers
                     myCommand.Parameters.AddWithValue("@ReservaNombre", res.nombre);
                     myCommand.Parameters.AddWithValue("@ReservaEmail", res.email);
                     myCommand.Parameters.AddWithValue("@ReservaDocumento", res.documento);
+                    myCommand.Parameters.AddWithValue("@ReservaTelefono", res.telefono);
                     myCommand.Parameters.AddWithValue("@ReservaServicio", res.servicio);
                     myCommand.Parameters.AddWithValue("@ReservaPersonas", res.personas);
                     myCommand.Parameters.AddWithValue("@ReservaFecha", res.fecha);
@@ -119,6 +123,7 @@ namespace APICafecito.Controllers
                         nombre = @ReservaNombre,
                         email = @ReservaEmail,
                         documento = @ReservaDocumento,
+                        telefono = ReservaTelefono;
                         servicio = @ReservaServicio,
                         personas = @ReservaPersonas,
                         fecha = @ReservaFecha,
@@ -140,6 +145,7 @@ namespace APICafecito.Controllers
                     myCommand.Parameters.AddWithValue("@ReservaNombre", res.nombre);
                     myCommand.Parameters.AddWithValue("@ReservaEmail", res.email);
                     myCommand.Parameters.AddWithValue("@ReservaDocumento", res.documento);
+                    myCommand.Parameters.AddWithValue("@ReservaTelefono", res.telefono);
                     myCommand.Parameters.AddWithValue("@ReservaServicio", res.servicio);
                     myCommand.Parameters.AddWithValue("@ReservaPersonas", res.personas);
                     myCommand.Parameters.AddWithValue("@ReservaFecha", res.fecha);
