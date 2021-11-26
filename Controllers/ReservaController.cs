@@ -69,7 +69,8 @@ namespace APICafecito.Controllers
                         servicio,
                         fecha,
                         hora,
-                        mensaje)
+                        mensaje,
+    |                   estado)
                         VALUES
                         (@ReservaNombre,
                         @ReservaEmail,
@@ -79,7 +80,8 @@ namespace APICafecito.Controllers
                         @ReservaServicio,
                         @ReservaFecha,
                         @ReservaHora,
-                        @ReservaMensaje);
+                        @ReservaMensaje,
+                        @ReservaEstado);
                         
             ";
 
@@ -101,6 +103,7 @@ namespace APICafecito.Controllers
                     myCommand.Parameters.AddWithValue("@ReservaFecha", res.fecha);
                     myCommand.Parameters.AddWithValue("@ReservaHora", res.hora);
                     myCommand.Parameters.AddWithValue("@ReservaMensaje", res.mensaje);
+                    myCommand.Parameters.AddWithValue("@ReservaEstado", res.estado);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
@@ -128,7 +131,8 @@ namespace APICafecito.Controllers
                         personas = @ReservaPersonas,
                         fecha = @ReservaFecha,
                         hora = @ReservaHora,
-                        mensaje = @ReservaMensaje
+                        mensaje = @ReservaMensaje,
+                        estado = @ReservaEstado
                         WHERE id = @ReservaId;
 
             ";
@@ -151,6 +155,7 @@ namespace APICafecito.Controllers
                     myCommand.Parameters.AddWithValue("@ReservaFecha", res.fecha);
                     myCommand.Parameters.AddWithValue("@ReservaHora", res.hora);
                     myCommand.Parameters.AddWithValue("@ReservaMensaje", res.mensaje);
+                    myCommand.Parameters.AddWithValue("@ReservaEstado", res.estado);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);

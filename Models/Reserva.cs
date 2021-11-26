@@ -12,5 +12,6 @@
         public string fecha { get; set; }
         public string hora { get; set; }
         public string mensaje { get; set; }
+        public string estado { get; set; }
     }
 }
