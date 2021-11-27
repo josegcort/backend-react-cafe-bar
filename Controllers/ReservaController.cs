@@ -71,7 +71,7 @@ namespace APICafecito.Controllers
                         fecha,
                         hora,
                         mensaje,
-    |                   estado)
+                        estado)
                         VALUES
                         (@ReservaNombre,
                         @ReservaEmail,
